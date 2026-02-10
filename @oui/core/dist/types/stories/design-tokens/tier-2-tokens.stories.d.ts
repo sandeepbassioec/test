@@ -1,0 +1,13 @@
+import type { Meta, StoryObj } from '@storybook/web-components';
+import './design-tokens.css';
+import './components/tier-2-colors';
+import './components/tier-2-borders';
+import './components/tier-2-shadows';
+import './components/tier-2-typography';
+declare const meta: Meta;
+export default meta;
+type Story = StoryObj;
+export declare const Colors: Story;
+export declare const Borders: Story;
+export declare const Shadows: Story;
+export declare const Typography: Story;
