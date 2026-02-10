@@ -1,0 +1,70 @@
+{
+	"name": "@oui/react",
+	"version": "0.10.1",
+	"author": "OEC",
+	"license": "MIT",
+	"description": "React wrapper for Oui component library",
+	"repository": {
+		"type": "git",
+		"url": "https://oec-vsts.visualstudio.com/UX/_git/oecui-library"
+	},
+	"publishConfig": {
+		"registry": "https://oec-vsts.pkgs.visualstudio.com/UX/_packaging/oui/npm/registry/",
+		"access": "restricted"
+	},
+	"main": "dist/index.js",
+	"module": "dist/index.esm.js",
+	"types": "dist/types/components.d.ts",
+	"files": [
+		"LICENSE",
+		"README.md",
+		"dist"
+	],
+	"scripts": {
+		"build": "pnpm run clean && pnpm run compile && pnpm run copy:public-styles && pnpm run copy:jest-mocks",
+		"clean": "rimraf dist && rimraf dist-transpiled",
+		"copy:public-styles": "cpx ./src/global/oui.css ./dist/",
+		"copy:jest-mocks": "cpx ../jest-mocks/oui-mocks.js ./dist/ && cpx ../jest-mocks/jest-setup.js ./dist/ && cpx ../jest-mocks/jest.config.js ./dist/",
+		"compile": "rollup -c",
+		"tsc": "tsc -p .",
+		"release": "pnpm build && pnpm publish",
+		"pack": "pnpm pack"
+	},
+	"devDependencies": {
+		"@rollup/plugin-typescript": "^8.4.0",
+		"@oui/core": "^0.9.1",
+		"@testing-library/jest-dom": "^5.16.5",
+		"@testing-library/react": "^13.4.0",
+		"@types/estree": "~0.0.51",
+		"@types/react": "^19.0.0",
+    	"@types/react-dom": "^19.0.0",
+		"babel-jest": "^29.7.0",
+		"eslint": "~8.21.0",
+		"eslint-plugin-react": "^7.31.11",
+		"happy-dom": "^14.7.1",
+		"identity-obj-proxy": "^3.0.0",
+		"jest": "^29.1.2",
+		"jest-environment-jsdom": "^29.1.2",
+		"react": "^19.0.0",
+    	"react-dom": "^19.0.0",
+		"react-hook-form": "~7.48.0",
+		"rimraf": "^3.0.2",
+		"rollup": "^2.78.1",
+		"rollup-plugin-copy": "^3.5.0",
+		"rollup-plugin-dts": "^4.2.0",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-sourcemaps": "^0.6.3",
+		"rollup-plugin-terser": "^7.0.2",
+		"shadow-dom-testing-library": "^1.11.2",
+		"typescript": "^5.7.3",
+		"cpx": "^1.5.0"
+	},
+	"peerDependencies": {
+		"react": ">=19.0.0",
+    	"react-dom": ">=19.0.0"
+	},
+	"dependencies": {
+		"@oui/core": "^0.9.1",
+		"@stencil/react-output-target": "^1.0.2"
+	}
+}
